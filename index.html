@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de Emissão de CO2 - Calcule o impacto ambiental de suas viagens">
+    <title>Calculadora de Emissão de CO2</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__title">🍃 Calculadora de Emissão de CO2</h1>
+            <p class="header__subtitle">
+                Calcule o impacto ambiental de suas viagens de forma simples e rápida. 
+                Descubra quanto CO2 é emitido em cada trajeto e compare diferentes modos de transporte.
+            </p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="main__container">
+            <form id="calculator-form" class="calculator-form">
+                <section class="calculator-form__section calculator-form__section--inputs">
+                    <h2 class="calculator-form__heading">Informações da Viagem</h2>
+
+                    <div class="form-group">
+                        <label for="origin" class="form-group__label">Cidade de Origem</label>
+                        <input
+                            type="text"
+                            id="origin"
+                            class="form-group__input"
+                            placeholder="Digite ou selecione a cidade de origem"
+                            list="cities-list"
+                            required
+                            autocomplete="off"
+                        >
+                        <datalist id="cities-list"></datalist>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="destination" class="form-group__label">Cidade de Destino</label>
+                        <input
+                            type="text"
+                            id="destination"
+                            class="form-group__input"
+                            placeholder="Digite ou selecione a cidade de destino"
+                            list="cities-list"
+                            required
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="distance" class="form-group__label">Distância (km)</label>
+                        <input
+                            type="number"
+                            id="distance"
+                            class="form-group__input"
+                            placeholder="A distância será preenchida automaticamente"
+                            readonly
+                            min="0"
+                            step="0.1"
+                        >
+                        <small class="form-group__helper">A distância será preenchida automaticamente</small>
+                    </div>
+
+                    <div class="form-group form-group--checkbox">
+                        <input
+                            type="checkbox"
+                            id="manual-distance"
+                            class="form-group__checkbox"
+                        >
+                        <label for="manual-distance" class="form-group__label form-group__label--checkbox">
+                            Inserir distância manualmente
+                        </label>
+                    </div>
+                </section>
+
+                <section class="calculator-form__section calculator-form__section--transport">
+                    <h2 class="calculator-form__heading">Modo de Transporte</h2>
+                    
+                    <fieldset class="transport-grid">
+                        <legend class="transport-grid__legend">Selecione o modo de transporte</legend>
+                        
+                        <div class="transport-grid__item">
+                            <input
+                                type="radio"
+                                id="transport-bicycle"
+                                name="transport"
+                                value="bicycle"
+                                class="transport-grid__input"
+                            >
+                            <label for="transport-bicycle" class="transport-grid__label">
+                                <span class="transport-grid__icon">🚴</span>
+                                <span class="transport-grid__text">Bicicleta</span>
+                            </label>
+                        </div>
+
+                        <div class="transport-grid__item">
+                            <input
+                                type="radio"
+                                id="transport-car"
+                                name="transport"
+                                value="car"
+                                class="transport-grid__input"
+                                checked
+                            >
+                            <label for="transport-car" class="transport-grid__label">
+                                <span class="transport-grid__icon">🚗</span>
+                                <span class="transport-grid__text">Carro</span>
+                            </label>
+                        </div>
+
+                        <div class="transport-grid__item">
+                            <input
+                                type="radio"
+                                id="transport-bus"
+                                name="transport"
+                                value="bus"
+                                class="transport-grid__input"
+                            >
+                            <label for="transport-bus" class="transport-grid__label">
+                                <span class="transport-grid__icon">🚌</span>
+                                <span class="transport-grid__text">Ônibus</span>
+                            </label>
+                        </div>
+
+                        <div class="transport-grid__item">
+                            <input
+                                type="radio"
+                                id="transport-truck"
+                                name="transport"
+                                value="truck"
+                                class="transport-grid__input"
+                            >
+                            <label for="transport-truck" class="transport-grid__label">
+                                <span class="transport-grid__icon">🚚</span>
+                                <span class="transport-grid__text">Caminhão</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </section>
+
+                <button type="submit" class="calculator-form__submit">
+                    Calcular Emissão
+                </button>
+            </form>
+
+            <section id="results" class="results hidden">
+                <h2 class="results__heading">Resultado</h2>
+                <div id="results-content" class="results__content"></div>
+            </section>
+
+            <section id="comparison" class="comparison hidden">
+                <h2 class="comparison__heading">Comparação de Transportes</h2>
+                <div id="comparison-content" class="comparison__content"></div>
+            </section>
+
+            <section id="carbon-credits" class="carbon-credits hidden">
+                <h2 class="carbon-credits__heading">Créditos de Carbono</h2>
+                <div id="carbon-credits-content" class="carbon-credits__content"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__credits">
+                Desenvolvido em parceria com a DIO | Projeto Github Copilot do William Wagner
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/routes-data.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

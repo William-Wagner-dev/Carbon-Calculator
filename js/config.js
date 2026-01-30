@@ -25,14 +25,14 @@ var CONFIG = (function () {
     bicycle: 0,
     car: 0.12,
     bus: 0.089,
-    truck: 0.96
+    boat: 0.96
   };
 
   var TRANSPORT_MODES = {
     bicycle: { label: 'Bicicleta', icon: '🚲', color: '#10b981' },
     car: { label: 'Carro', icon: '🚗', color: '#059669' },
     bus: { label: 'Ônibus', icon: '🚌', color: '#3b82f6' },
-    truck: { label: 'Caminhão', icon: '🚚', color: '#ef4444' }
+    boat: { label: 'Barco', icon: '⛵', color: '#ef4444' }
   };
 
   var CARBON_CREDIT = {
